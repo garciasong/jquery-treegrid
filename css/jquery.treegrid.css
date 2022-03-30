@@ -1,6 +1,44 @@
-.treegrid-indent {width:16px; height: 16px; display: inline-block; position: relative;}
+.treegrid-indent {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    position: relative;
+}
 
-.treegrid-expander {width:16px; height: 16px; display: inline-block; position: relative; cursor: pointer;}
+.treegrid-expander {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    border: 2px solid #a1aab1;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin: -3px 4px 0 0;
+}
 
-.treegrid-expander-expanded{background-image: url(../img/collapse.png); }
-.treegrid-expander-collapsed{background-image: url(../img/expand.png);}
+.treegrid-expander.fa,
+.treegrid-expander.glyphicon,
+.treegrid-expander.icon {
+    height: auto;
+    width: auto;
+    border: none;
+    border-radius: 0;
+    vertical-align: unset;
+}
+
+.treegrid-expander-expanded {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 9px solid #a1aab1;
+    border-bottom: 0;
+    border-radius: unset;
+}
+
+.treegrid-expander-collapsed {
+    border-left: 9px solid #a1aab1;
+    border-right: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-radius: unset;
+}
