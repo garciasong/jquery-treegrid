@@ -43,6 +43,6 @@
     border-radius: unset;
 }
 
-.treegrid-expander:first-of-type:not(.treegrid-indent):not(.fa):not(.glyphicon):not(.icon) {
+.treegrid-expander:first-of-type:not(.treegrid-indent):not(.fa):not(.glyphicon):not(.icon):not(.treegrid-expander-collapsed):not(.treegrid-expander-expanded) {
     display: none;
 }
