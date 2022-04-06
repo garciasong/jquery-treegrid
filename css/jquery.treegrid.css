@@ -42,3 +42,7 @@
     border-bottom: 5px solid transparent;
     border-radius: unset;
 }
+
+.treegrid-expander:first-of-type:not(.treegrid-indent):not(.fa):not(.glyphicon):not(.icon) {
+    display: none;
+}
