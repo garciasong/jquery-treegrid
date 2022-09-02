@@ -1,5 +1,5 @@
 /*
- * jQuery treegrid Plugin 0.3.0
+ * jQuery treegrid Plugin 0.3.1
  * https://github.com/maxazan/jquery-treegrid
  *
  * Copyright 2013, Pomazan Max
@@ -523,6 +523,9 @@
                     $this.treegrid('renderExpander');
                     $this.treegrid('getChildNodes').treegrid('render');
                 }
+                if ($this.treegrid('isRoot')) {
+                    $this.addClass($this.treegrid('getSetting', 'expanderIsrootClass'));
+                }
             });
         },
         /**
@@ -571,6 +574,7 @@
         indentTemplate: '<span class="treegrid-indent"></span>',
         expanderExpandedClass: 'treegrid-expander-expanded',
         expanderCollapsedClass: 'treegrid-expander-collapsed',
+        expanderIsrootClass: 'treegrid-root',
         treeColumn: 0,
         getExpander: function() {
             return $(this).find('.treegrid-expander');
