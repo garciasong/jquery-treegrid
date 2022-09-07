@@ -344,6 +344,32 @@
             return $(this).treegrid('getChildNodes').length === 0;
         },
         /**
+         * Method return true if node has no child nodes but siblings node has child nodes
+         *
+         * @returns {Boolean}
+         */
+        imleafSibnot: function() {
+            var $this = $(this);
+            if ($this.treegrid('isLeaf')) {
+                var siblings = null;
+                var parentNode = null;
+                var isLeaf = false;
+                parentNode = $this.treegrid('getParentNode');
+                if (parentNode !== null) {
+                    siblings = parentNode.treegrid('getChildNodes');
+                    siblings.each(function() {
+                        if (!$(this).treegrid('isLeaf')) {
+                            isLeaf = true;
+                            return false;
+                        }
+                    });
+                    return isLeaf;
+                }
+            }
+            return false;
+        },
+
+        /**
          * Method return true if node last in branch
          *
          * @returns {Boolean}
@@ -526,6 +552,9 @@
                 if ($this.treegrid('isRoot')) {
                     $this.addClass($this.treegrid('getSetting', 'expanderIsrootClass'));
                 }
+                if ($this.treegrid('imleafSibnot')) {
+                    $this.addClass($this.treegrid('getSetting', 'expanderImleafSibnot'));
+                }
             });
         },
         /**
@@ -538,7 +567,6 @@
                 var $this = $(this);
                 var expander = $this.treegrid('getSetting', 'getExpander').apply(this);
                 if (expander) {
-
                     if (!$this.treegrid('isCollapsed')) {
                         expander.removeClass($this.treegrid('getSetting', 'expanderCollapsedClass'));
                         expander.addClass($this.treegrid('getSetting', 'expanderExpandedClass'));
@@ -575,6 +603,7 @@
         expanderExpandedClass: 'treegrid-expander-expanded',
         expanderCollapsedClass: 'treegrid-expander-collapsed',
         expanderIsrootClass: 'treegrid-root',
+        expanderImleafSibnot: 'treegrid-imleaf-sibnot',
         treeColumn: 0,
         getExpander: function() {
             return $(this).find('.treegrid-expander');
